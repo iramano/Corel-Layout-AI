@@ -1,0 +1,29 @@
+# CorelDRAW
+*.cdr
+*.bak
+*.tmp
+
+# Projeto VBA compilado/local
+*.gms
+
+# Arquivos gerados durante análise
+preview*.png
+cena*.txt
+pedido*.txt
+layout*.txt
+roles.txt
+blocks.txt
+relatorio*.txt
+
+# Arquivos temporários
+*.log
+*.temp
+~*
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# IDE / editor
+.vscode/
+.idea/

@@ -1,0 +1,63 @@
+ANÁLISE DE BLOCOS VISUAIS
+
+Leia:
+- cena.txt
+- preview.png
+- roles.txt
+
+Crie:
+blocks.txt
+
+Formato:
+
+BLOCK|NOME|SELETORES
+
+Exemplo de sintaxe:
+
+BLOCK|OFFER|@CAMPAIGN,@PRICE_PRIMARY,@TITLE
+
+Os exemplos NÃO representam relações obrigatórias.
+
+OBJETIVO
+
+Identifique quais elementos da arte original funcionam visualmente como unidades de composição.
+
+ROLE descreve o que um elemento É.
+
+BLOCK descreve quais elementos FUNCIONAM JUNTOS nesta arte específica.
+
+REGRAS IMPORTANTES
+
+- Não assuma relações universais.
+- TITLE não pertence necessariamente a PRODUCT.
+- TITLE não pertence necessariamente a OFFER.
+- LOGO não pertence necessariamente a PRODUCT.
+- CAMPAIGN não pertence necessariamente a PRICE.
+- Analise a composição visual original antes de criar os blocos.
+- Preserve relações existentes que sejam importantes para a identidade da peça.
+- Um bloco deve representar uma unidade visual real, não apenas objetos próximos por acaso.
+- Não crie blocos desnecessários.
+- Não coloque todos os objetos em um único bloco.
+- Elementos decorativos podem formar FOOTER, HEADER ou DECORATION quando fizer sentido.
+- O nome dos blocos deve ser curto, sem espaços e em letras maiúsculas.
+- Use preferencialmente roles existentes.
+- IDs diretos e IDs hierárquicos são permitidos quando necessário.
+- Use apenas elementos existentes na arte.
+- Não altere cena.txt, preview.png ou roles.txt.
+
+EXEMPLOS POSSÍVEIS DE NOMES
+
+BRAND
+PRODUCT
+OFFER
+OFFER_PRIMARY
+OFFER_SECONDARY
+FOOTER
+HEADER
+LEGAL
+DECORATION
+INFO
+
+Esses nomes são sugestões, não uma estrutura obrigatória.
+
+O mais importante é representar corretamente a composição da arte atual.

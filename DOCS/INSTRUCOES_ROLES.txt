@@ -1,0 +1,79 @@
+Analise:
+
+- cena.txt
+- preview.png
+- pedido.txt
+
+Identifique a função visual dos elementos da composição.
+
+Crie ou sobrescreva roles.txt.
+
+Formato obrigatório:
+
+ROLE|NOME_DO_ROLE|ID ou IDs separados por vírgula
+
+Roles preferenciais:
+
+BACKGROUND
+PRODUCT
+TITLE
+SUBTITLE
+LOGO
+CAMPAIGN
+BAND_PRIMARY
+BAND_SECONDARY
+OFFER_PRIMARY
+OFFER_SECONDARY
+PRICE_PRIMARY
+PRICE_SECONDARY
+BADGE
+LEGAL
+DECORATION
+
+Regras:
+
+- Use somente IDs existentes em cena.txt.
+- IDs hierárquicos como 3.1 e 3.2.2 também são permitidos.
+- Um role pode conter vários IDs.
+- Um objeto pode participar de mais de um role quando isso for semanticamente necessário.
+- PRICE_PRIMARY deve representar o preço/oferta visualmente dominante.
+- PRICE_SECONDARY deve representar preço secundário.
+- PRODUCT corresponde à fotografia ou ilustração principal do produto.
+- BACKGROUND corresponde ao fundo principal.
+- BAND_PRIMARY corresponde à faixa ou box associado à oferta principal.
+- TITLE corresponde à descrição principal do produto.
+- CAMPAIGN corresponde a selo, chamada ou identidade da campanha.
+- Não altere o CorelDRAW.
+- Não altere cena.txt ou preview.png.
+- Gere somente roles.txt.
+
+ELEMENTOS DECORATIVOS
+
+Elementos como:
+- grafismos de rodapé;
+- listras;
+- padrões;
+- formas de apoio;
+- molduras;
+- grafismos de identidade;
+
+devem preferencialmente receber roles como:
+
+DECORATION
+FOOTER_DECORATION
+HEADER_DECORATION
+
+Não classifique automaticamente esses elementos como BACKGROUND.
+
+BACKGROUND é o fundo estrutural principal da página.
+
+Elementos decorativos não devem ser automaticamente esticados para preencher toda a nova página.
+
+Ao mudar o aspect ratio, avalie se o grafismo deve:
+- manter proporção;
+- ocupar apenas uma região;
+- ser esticado;
+- ser reposicionado;
+- permanecer como rodapé/cabeçalho.
+
+Preserve sua função visual, não necessariamente sua dimensão relativa original.

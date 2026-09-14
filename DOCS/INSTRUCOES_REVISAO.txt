@@ -1,0 +1,302 @@
+Analise preview_resultado.png em conjunto com:
+- preview.png
+- cena.txt
+- pedido.txt
+- layout.txt
+
+Revise o layout como um designer gráfico.
+
+Prioridades:
+1. hierarquia visual;
+2. alinhamento;
+3. equilíbrio;
+4. uso eficiente do espaço;
+5. destaque de preço;
+6. relação entre produto, título e oferta;
+7. preservar textos e preços;
+8. preservar proporção de produtos e logos;
+9. fundos e faixas podem ser esticados;
+10. elementos relacionados devem permanecer visualmente agrupados.
+
+Use apenas estes comandos no layout_v2.txt:
+
+PAGE|largura_mm|altura_mm
+
+FILLPAGE|ID
+
+OBJECT|ID|CENTER_X_MM|CENTER_Y_MM|WIDTH_MM
+
+SET|ID1,ID2,...|CENTER_X_MM|CENTER_Y_MM|WIDTH_MM
+
+STRETCH|ID|CENTER_X_MM|CENTER_Y_MM|WIDTH_MM|HEIGHT_MM
+
+FITINSIDE|ID1,ID2,...|ID_CONTAINER|FATOR
+
+SCALE|ID|FATOR
+
+Regras:
+- produtos e logos nunca devem ser deformados;
+- preços devem ter forte destaque visual;
+- textos relacionados à mesma oferta devem ficar próximos;
+- textos dentro de faixas devem permanecer visualmente dentro delas;
+- fundos devem preencher a página;
+- não invente textos, preços ou produtos;
+- não altere preview.png, cena.txt, pedido.txt ou layout.txt;
+- use apenas IDs existentes em cena.txt.
+
+VERSIONAMENTO DO LAYOUT:
+
+- Nunca sobrescreva uma versão existente.
+- Verifique os arquivos de layout existentes.
+- Se existir apenas layout.txt, crie layout_v2.txt.
+- Se existir layout_v2.txt, crie layout_v3.txt.
+- Se existir layout_v3.txt, crie layout_v4.txt.
+- Continue essa sequência automaticamente.
+- Sempre use como ponto de partida a versão mais recente.
+
+REGRAS DE COMPOSIÇÃO:
+
+- Não considere apenas posições individuais; observe relações visuais.
+- Textos associados a uma faixa devem parecer pertencentes à faixa.
+- Use FITINSIDE quando texto precisar ficar contido em uma faixa ou box.
+- Use STRETCH para fundos, faixas e elementos geométricos que podem mudar de proporção.
+- Use OBJECT para produtos, logos e elementos que nunca devem ser deformados.
+- Use SET para elementos que precisam manter sua composição relativa.
+- Use SCALE somente para pequenos ajustes de hierarquia visual.
+- Preço principal deve ser claramente mais importante que preço secundário.
+- Produto deve ter tamanho visual compatível com sua importância.
+- Evite grandes áreas vazias sem função.
+- Respeite margens visuais consistentes.
+- Evite elementos que pareçam soltos ou sem relação com os elementos próximos.
+
+SISTEMA DE ZONAS
+
+O layout pode usar zonas percentuais da página.
+
+Sintaxe:
+
+ZONE|NOME|X_PERCENTUAL|Y_PERCENTUAL|LARGURA_PERCENTUAL|ALTURA_PERCENTUAL
+
+As coordenadas são relativas à página:
+- X=0 é a borda esquerda.
+- Y=0 é a borda inferior.
+- largura e altura usam valores de 0 a 100.
+
+Para posicionar conteúdo:
+
+PLACEZONE|SELETOR|NOME_ZONA|ALINHAMENTO_HORIZONTAL|ALINHAMENTO_VERTICAL|FATOR
+
+Alinhamentos horizontais:
+LEFT
+CENTER
+RIGHT
+
+Alinhamentos verticais:
+TOP
+CENTER
+BOTTOM
+
+Exemplo:
+
+ZONE|RIGHT|75|5|23|90
+PLACEZONE|@PRODUCT|RIGHT|CENTER|CENTER|0.90
+
+Prefira zonas e posicionamento relativo quando isso tornar o layout mais robusto.
+
+Use coordenadas absolutas apenas quando forem necessárias para ajustes finos.
+
+ANÁLISE SEMÂNTICA
+
+Se existir analise_layout.txt, use suas métricas como apoio.
+
+Não siga métricas cegamente.
+A avaliação visual do preview continua sendo prioritária.
+
+Observe especialmente:
+
+- hierarquia entre produto e preço principal;
+- legibilidade do título;
+- ocupação equilibrada da página;
+- excesso de espaço vazio;
+- elementos importantes pequenos demais;
+- elementos dominantes grandes demais;
+- relação entre título, faixa e oferta;
+- equilíbrio entre os blocos da composição.
+
+As métricas são indicadores, não regras absolutas.
+
+RELAÇÕES DE DISTÂNCIA
+
+Existe o comando GAP para controlar a proximidade entre blocos.
+
+Sintaxe:
+
+GAP|REFERENCIA|OBJETO_A_MOVER|DIRECAO|DISTANCIA|UNIDADE
+
+Direções:
+LEFT
+RIGHT
+ABOVE
+BELOW
+
+Unidades:
+MM   = milímetros
+PCTW = percentual da largura da página
+PCTH = percentual da altura da página
+
+Exemplo:
+
+GAP|@PRICE_PRIMARY|@OFFER_SECONDARY|RIGHT|2|PCTW
+
+Significa:
+posicionar OFFER_SECONDARY à direita de PRICE_PRIMARY
+com distância igual a 2% da largura da página.
+
+Use GAP preferencialmente para elementos semanticamente relacionados.
+
+Exemplos:
+- preço principal e preço secundário;
+- produto e bloco de oferta;
+- título e subtítulo;
+- logo e margem de comunicação;
+- selo e bloco promocional.
+
+Em layouts que possam mudar de dimensão, prefira PCTW ou PCTH a valores absolutos em MM.
+
+Use GAP depois dos comandos de escala e dimensionamento dos elementos envolvidos.
+
+BLOCOS SEMÂNTICOS
+
+Se blocks.txt existir, use os blocos como unidades de composição.
+
+Um bloco é referenciado com #.
+
+Exemplos:
+
+#PRODUCT
+#OFFER
+#BRAND
+#FOOTER
+
+Roles usam @.
+Blocos usam #.
+
+Exemplo:
+
+@PRICE_PRIMARY
+#OFFER_PRIMARY
+
+Não confunda os dois.
+
+Ao mudar drasticamente o aspect ratio, não distribua simplesmente todos os objetos pela nova largura ou altura.
+
+Primeiro identifique quais relações da composição original devem permanecer.
+
+Prefira mover e posicionar blocos coerentes.
+
+Use relações entre blocos:
+
+PLACEZONE|#PRODUCT|LEFT|CENTER|CENTER|0.90
+PLACEZONE|#OFFER|RIGHT|CENTER|CENTER|0.90
+
+ALIGN|#OFFER|CENTER_Y|#PRODUCT
+
+GAP|#PRODUCT|#OFFER|RIGHT|4|PCTW
+
+Não interprete "aproveitar o espaço" como "espalhar todos os elementos uniformemente".
+
+Espaço vazio pode ser intencional quando melhora hierarquia, leitura e equilíbrio.
+
+OCUPAÇÃO DA COMPOSIÇÃO
+
+Não confunda composição compacta com composição pequena.
+
+Elementos pertencentes ao mesmo bloco devem possuir relações internas coerentes, mas o conjunto dos principais blocos deve aproveitar adequadamente a área disponível.
+
+Em formatos horizontais largos:
+
+- não espalhe elementos sem relação apenas para preencher espaço;
+- não concentre toda a comunicação em uma pequena região central;
+- busque equilíbrio entre coesão e ocupação;
+- PRODUCT e OFFER podem permanecer visualmente próximos enquanto o conjunto principal ocupa uma parcela significativa da largura;
+- considere aumentar proporcionalmente os principais blocos quando houver espaço excessivo;
+- preserve áreas de respiro, mas evite grandes áreas vazias sem função dos dois lados.
+
+LIMITES DA PÁGINA
+
+Nenhum conteúdo visível deve ultrapassar os limites da página, salvo quando for deliberadamente usado como sangria.
+
+Especialmente:
+- LOGO deve permanecer completamente dentro da página;
+- LEGAL deve permanecer dentro da página;
+- FOOTER e FOOTER_DECORATION devem permanecer dentro da página;
+- PRODUCT deve permanecer dentro da página;
+- textos e preços devem permanecer dentro da página.
+
+Depois de aplicar MARGIN, GAP, SCALE, PLACEZONE ou ALIGN, reavalie os limites finais dos blocos.
+
+FOOTER
+
+FOOTER representa uma região inferior da composição.
+
+O grafismo pertencente ao FOOTER deve permanecer visualmente associado à borda inferior, mas dentro da área da página, salvo indicação explícita de sangria.
+
+Não permita que o agrupamento de LEGAL + FOOTER_DECORATION empurre o grafismo para fora da página.
+
+Aproveitar o espaço horizontal NÃO significa:
+- distribuir uniformemente todos os objetos;
+- ocupar obrigatoriamente toda a largura;
+- deixar a composição excessivamente compacta no centro.
+
+Significa criar uma composição adequada ao novo aspect ratio, equilibrando:
+- ocupação;
+- proximidade;
+- hierarquia;
+- respiro;
+- margens.
+
+ÁREA SEGURA
+
+Existe o comando:
+
+SAFEAREA|VALOR|UNIDADE
+
+Exemplo:
+
+SAFEAREA|3|PCTH
+
+PCTH representa percentual da altura da página.
+
+Em formatos extremamente horizontais, PCTH é geralmente preferível a PCTW para margens externas.
+
+AUTOFIT
+
+Sintaxe:
+
+AUTOFIT|SELETOR
+
+Exemplos:
+
+AUTOFIT|#BRAND
+AUTOFIT|#PRODUCT
+AUTOFIT|#OFFER
+AUTOFIT|#FOOTER
+
+AUTOFIT garante que o seletor permaneça dentro da área segura.
+
+Use AUTOFIT depois dos comandos de posicionamento, escala, GAP, ALIGN e MARGIN.
+
+Exemplo de ordem:
+
+SAFEAREA|3|PCTH
+
+PLACEZONE|#PRODUCT|LEFT|CENTER|CENTER|0.90
+PLACEZONE|#OFFER|RIGHT|CENTER|CENTER|0.90
+
+GAP|#PRODUCT|#OFFER|RIGHT|4|PCTW
+ALIGN|#OFFER|CENTER_Y|#PRODUCT
+
+AUTOFIT|#PRODUCT
+AUTOFIT|#OFFER
+AUTOFIT|#BRAND
+AUTOFIT|#FOOTER
