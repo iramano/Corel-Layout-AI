@@ -1,4 +1,4 @@
-# Corel AI
+# Corel Layout AI
 
 Experimental automation system for intelligent CorelDRAW layout adaptation using VBA and AI-assisted visual analysis.
 
